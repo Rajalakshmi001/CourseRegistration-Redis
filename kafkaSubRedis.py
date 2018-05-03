@@ -14,7 +14,7 @@ if __name__ == '__main__':
      group_id='RedisReg', 
         auto_offset_reset='latest',
         value_deserializer= lambda m: json.loads(m.decode('utf-8')))
-    db = redis.StrictRedis(charset="utf-8", decode_responses=True)
+    db = redis.StrictRedis(host='137.112.89.91', port='9092', charset="utf-8", decode_responses=True)
     assert(db.ping() == True)
 
     listen(consumer)
