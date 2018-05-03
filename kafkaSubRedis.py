@@ -6,7 +6,7 @@ db = None
 
 def listen(consumer):
     for msg in consumer:
-        data = json.loads(msg)
+        data = json.loads(msg.content.decone('utf-8'))
         print(data)
 
 if __name__ == '__main__':
