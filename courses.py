@@ -11,7 +11,7 @@ def course_create(db, data):
     # add courseNum to dept and courseNum lists
     splitNum = split_course_num(course_num)
     db.sadd('dept:' + splitNum[0], course_num)
-    db.sadd('courseNum:' + splitNum[1], course_num)
+    db.sadd('ind:' + splitNum[1], course_num)
 
     # tokenize indexes
     tokenize_string_to_indexes(db, course_name, 'ind', course_num)
@@ -34,7 +34,7 @@ def course_delete(db, data):
     
     splitNum = split_course_num(course_num)
     db.srem('dept:' + splitNum[0], course_num)
-    db.srem('courseNum:' + splitNum[1], course_num)
+    db.srem('ind:' + splitNum[1], course_num)
 
     # delete tokenized string from indexes
     tokenize_string_to_indexes(db, course_name, 'ind', course_num, True)
